@@ -1,0 +1,158 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    flatDir name: 'nonMaven', dirs: 'local_lib'
+}
+
+dependencies {
+	//Compile Libs
+	compile ("org.springframework:spring-orm:${springframeworkVersion}")
+	compile ("org.springframework:spring-test:${springframeworkVersion}")
+	compile ("org.springframework:spring-context:${springframeworkVersion}")
+	compile ("junit:junit:${junitVersion}")
+	compile ("org.hibernate:hibernate-core:${hibernateCoreVersion}")
+   	compile ("org.apache.ws.commons.axiom:axiom-impl:axiom-impl:${axiomVersion}")
+   	compile ("axis:axis:${axisVersion}")
+    compile ("org.apache.axis2:axis2-adb-codegen:${axis2Version}")
+	compile ("org.apache.axis2:axis2-transport-http:${axis2Version}")
+	compile ("backport-util-concurrent:backport-util-concurrent:${backportVersion}")
+	compile ("c3p0:c3p0:${c3p0Version}")
+	compile ("org.codehaus.castor:castor-anttasks:${castorVersion}")
+	compile ("commons-fileupload:commons-fileupload:${commonsFileuploadVersion}") 
+	compile ("commons-httpclient:commons-httpclient:${commonsHttpclientVersion}") 
+	compile ("commons-pool:commons-pool:${commonsPoolVersion}")
+	compile ("org.mockito:mockito-all:${mockitoVersion}")
+	compile ("quartz:quartz:${quartzVersion}")
+	compile "org.apache.rampart:rampart-core:1.6.2"
+	compile ("org.apache.ws.commons:ws-commons-util:${wsCommonsUtilVersion}") //using junit 3.81, xml-apis 1.0.b2
+	compile ("xmlbeans:xbean:${xbeanVersion}")
+	compile ("xerces:xercesImpl:${xercesImplVersion}") //using xml-apis 1.3.03 dp by woden-impl-dom
+	compile ("org.apache.xmlrpc:xmlrpc-client:${xmlrpcClientVersion}") //using common-httpclient 3.0.1
+	compile ("com.thoughtworks.xstream:xstream:${xstreamVersion}")
+	compile ("com.fdsapi:fdsapi:${fdsapiVersion}")
+	compile ("jasperreports:jasperreports:${jasperreportsVersion}")
+	compile ("net.sourceforge.javacsv:javacsv:${javacsvVersion}")
+	compile ("com.sun.xml.bind:jaxb-xjc:${jaxbXjcVersion}")
+	compile (":qip-wss4j:1.6.16") //local
+	complie (":tar") //local
+	compile (":not-yet-commons-ssl:0.3.10") //local
+	compile (":ojdbc7") // local
+	compile ("java-getopt:1.0.12") //local
+	compile (":jabsorb:1.3.1") // local
+	compile (":jamon:2.2") //old - local
+	compile (":javolution:3.7.5") // local
+	compile (":jaxrpc-api") //local
+	compile (":jconn3:6.0.5") //local
+	compile (":jgrapht-jdk1.5") //local
+	compile (":libidn:1.8") //local
+	//compile (":axiom-api:${axiomVersion}") depend
+   //compile (":axis2-adb:${axis2Version}") depend by axis2-adb-codegen (axis2-adb ver 1.6.2)
+   	//compile ("org.apache.axis2:axis2-codegen:${axis2Version}") depend by axis2-adb-codegen (axis2-codegen ver 1.6.2)
+   	//compile (":axis2-kernel:${axis2Version}") depend by axis2-adb-codegen (axis2-kernel 1.6.2)
+	//compile (":castor-codegen:${castorVersion}") depend by castor-anttasks (castor-codegen)
+	//compile (":castor-core:${castorVersion}") depend castor-codegen
+	//compile (":castor-xml:${castorVersion}") depend castor-codegen
+	//compile (":castor-xml-schema:${castorVersion}") depend castor-codegen
+	//compile (":commons-codec:${commonsCodecVersion}") depend common-httpclient
+	//compile (":commons-collections:${commonsCollectionsVersion}") depend 
+	//compile (":commons-digester:${commonsDigesterVersion}") dp by  quartz
+	//compile (":commons-discovery:${commonsDiscoveryVersion}") depend
+	//compile (":commons-io:${commonsIoVersion}") depend commons-fileupload
+	//compile 'commons-javaflow:commons-javaflow:20060411' depend of jasperreports
+	//compile (":commons-lang:${commonsLangVersion}") depend
+	//compile (":neethi:${neethiVersion}") depend by axis2-mtompolicy
+	//compile (":wsdl4j:${wsdl4jVersion}") depend
+	//compile (":wstx-asl:${wstxAslVersion}") depend
+	//compile (":XmlSchema:${xmlSchemaVersion}") depend by axis2-adb-codegen (xml-schema ver 1.4.7)
+	//compile (":jcommon:${jcommonVersion}") depend by jasperreports
+	//compile (":jfreechart:${jfreechartVersion}") depend by jasperreports
+	//compile (":mail:${mailVersion}") depend
+	
+	//Runtime libs
+   	runtime ("annogen:annogen:${annogenVersion}")
+   	runtime ("antlr:antlr:${antlrVersion}") //depend by jasper 
+   	runtime ("asm:asm:${asmVersion}")
+   	runtime ("org.apache.avalon.logkit:avalon-logkit:${avalonLogkitVersion}")
+   	runtime ("org.apache.ws.commons.axiom:axiom-dom:${axiomDomVersion}")
+   	runtime ("org.apache.axis2:axis2-mtompolicy:${axis2Version}")
+   	runtime ("org.apache.axis2:axis2-soapmonitor-servlet:${axis2Version}")
+	runtime ("org.apache.axis2:axis2-transport-local:${axis2Version}")
+	runtime ("org.apache.axis2:axis2-transport-tcp:${axis2transportTcpVersion}")
+   	runtime ("axis:axis-jaxrpc:axis-jaxrpc:${axisJaxrpcVersion}") //dp axis (axis-jaxrpc -ver 1.4)
+	runtime ("org.bouncycastle:bctsp-jdk16:${bouncycastleVersion}")
+	runtime ("bsf:bsf:${bsfVersion}")
+	runtime ("cglib:cglib-nodep:${cglibNodepVersion}")
+	runtime ("org.apache.axis2:mex-impl:${axis2MexImplVersion}")
+	runtime ("ognl:ognl:${ognlVersion}")
+	runtime ("org.opensaml:opensaml:${opensamlVersion}")
+	runtime ("oro:oro:${oroVersion}")
+	runtime ("org.slf4j:axis-saaj:${axisSaajVersion}") //dp axis (axis-saaj ver 1.4)
+	runtime ("org.slf4j:slf4j-api:${slf4jVersion}")
+	runtime ("org.slf4j:slf4j-log4j12:${slf4jVersion}")
+	runtime ("org.apache.axis2:soapmonitor:${axis2SoapmonitorVersion}")
+	runtime ("stax:stax-api:${staxApiVersion}")
+	runtime ("org.apache.woden:woden-impl-commons:${wodenVersion}")
+	runtime (":woden-impl-dom:${wodenVersion}") //using  xercesImpl ver 2.8.1
+	runtime (":xalan:${xalanVersion}") //depend ny jasper (260)
+	runtime ("org.apache.santuario:xmlsec:${xmlsecVersion}")
+	runtime ("org.opensaml:xmltooling:${xmltoolingVersion}")
+	runtime ("org.ogce:xpp3:${xpp3Version}")
+	runtime ("net.sf.ehcache:ehcache:${ehcacheVersion}")
+	runtime ("org.apache.geronimo.specs:geronimo-jta_1.1_spec:${geronimoJtaVersion}")
+	runtime ("org.apache.geronimo.specs:geronimo-ws-metadata_2.0_spec:${geronimoWsMetadataVersion}")
+	runtime (":itext:${itextVersion}") //depend by jasperreports
+	runtime ("com.sun.xml.bind:jaxb-impl:${jaxbImplVersion}")
+	runtime ("org.apache.ws.jaxme:jaxmeapi:${jaxmeapiVersion}")
+	runtime ("org.slf4j:jcl-over-slf4j:${jclOverSlf4jVersion}")
+	runtime ("joda-time:joda-time:${jodaTimeVersion}")
+	runtime ("javax.ws.rs:jsr311-api:${jsr311ApiVersion}")
+	runtime ("log4j:log4j:${log4jVersion}") //depend by avalon-log-kit
+	runtime (":tribes:6.0.10") //local
+	runtime (":MinML2") //local
+	runtime (":jakarta-oro:${jakartaOroVersion}") //local
+	runtime (":IPAddressValuator") //local
+	runtime (":jta") //local
+	runtime (":juli:${juliVersion}") //local
+	//runtime (":activation:${activationVersion}") depend
+   	//runtime (":apache-mime4j-core:${apacheMine4jCoreVersion}") depend
+	//runtime (":axis2-transport-base:${axis2TransportBaseVersion}") depend by axis2-transport-tcp
+	//runtime (":bcmail-jdk16:${bouncycastleVersion}") depend by bctsp-jdk16
+	//runtime (":bcprov-jdk16:${bouncycastleVersion}") depend by bcmail-jdk16
+	//runtime 'commons-beanutils:commons-beanutils:1.7.0' depend commons-digester
+	//runtime (":openws:${openewsVersion}") depend by opensaml
+	//runtime 'org.apache.rampart:rampart-policy:${rampartVersion}' depend
+	//runtime 'org.apache.rampart:rampart-trust:${rampartVersion}' depend
+	//runtime (":velocity:${velocityVersion}") depend
+	//runtime ("org.apache.woden:woden-api:${wodenVersion}") dp woden-impl-commons
+	//runtime (":xml-apis:${apisVersion}") depend
+	//runtime (":esapi:${esapiVersion}") depend by opensaml
+	//runtime (":geronimo-activation_1.1_spec:${geronimoActivationVersion}") dp by axiom-impl
+	//runtime (":geronimo-javamail_1.4_spec:${geronimoJavamailVersion}") dp by axiom-impl
+	//runtime (":geronimo-stax-api_1.0_spec:${geronimoStaxApiVersion}") dp by axiom-impl
+	//runtime (":httpcore:${httpcoreVersion}") depend axis2-transport-http (httpcore ver 4.0)
+	//runtime (":jaxb-api:${jaxbApiVersion}") depend by jaxb-impl
+	//runtime (":jaxen:${jaxenVersion}") depend
+}
+
+task copyCompileLibs(type: Copy) {
+    into "libs"
+    from configurations.compile
+  }
+  
+task copyRuntimeLibs(type: Copy) {
+    into "buildlibs"
+    from configurations.runtime - configurations.compile 
+  }
+
+task cleanLibs(type: Delete) {
+  	  print 'Cleaning libs...'
+      delete fileTree(dir: "libs")
+      delete fileTree(dir: "buildlibs")
+      def env = System.getenv()
+      def userHome = env['GRADLE_USER_HOME']
+      delete "${userHome}\\caches\\modules-2"
+  }
+  
